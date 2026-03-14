@@ -90,3 +90,69 @@ sources:
           - name: landmark
             description: Nearby landmark or point of interest
 
+ 
+      - name: source_nyc_open_restaurant_apps
+        description: |
+          NYC Open Restaurant Applications (Historic).
+          One row per application submitted by a food establishment seeking authorization for outdoor dining.
+        columns:
+          - name: time_of_submission
+            description: Timestamp when the application was submitted
+          - name: street
+            description: Street name of the restaurant
+          - name: sla_serial_number
+            description: State Liquor Authority serial number
+          - name: sla_license_type
+            description: State Liquor Authority license type
+          - name: sidewalk_dimensions_width
+            description: Width of the sidewalk seating area
+          - name: sidewalk_dimensions_length
+            description: Length of the sidewalk seating area
+          - name: sidewalk_dimensions_area
+            description: Total area of the sidewalk seating space
+          - name: seating_interest_sidewalk
+            description: Type of seating interest (Sidewalk, Roadway, or Both)
+          - name: roadway_dimensions_width
+            description: Width of the roadway seating area
+          - name: roadway_dimensions_length
+            description: Length of the roadway seating area
+          - name: roadway_dimensions_area
+            description: Total area of the roadway seating space
+          - name: restaurant_name
+            description: Name of the restaurant
+          - name: qualify_alcohol
+            description: Whether establishment qualifies to serve alcohol outdoors
+          - name: zip
+            description: Zip/postcode of the restaurant
+          - name: objectid
+            description: Unique identifier for each record
+          - name: nta
+            description: Neighborhood Tabulation Area code
+          - name: longitude
+            description: Longitude coordinate of the restaurant
+          - name: legal_business_name
+            description: Legal business name of the establishment
+          - name: latitude
+            description: Latitude coordinate of the restaurant
+          - name: landmarkdistrict_terms
+            description: Landmark district terms and conditions
+          - name: landmark_district_or_building
+            description: Whether located in a landmark district or building
+          - name: healthcompliance_terms
+            description: Health compliance terms and conditions
+          - name: globalid
+            description: Global unique identifier
+          - name: food_service_establishment
+            description: Food Service Establishment Permit number
+          - name: doing_business_as_dba
+            description: Doing business as name
+          - name: council_district
+            description: NYC Council District number
+          - name: community_board
+            description: NYC Community Board district number
+          - name: census_tract
+            description: Census tract where restaurant is located
+          - name: business_address
+            description: Full business address
+          - name: bulding_number
+            description: Building number (note - typo in source data, spelled bulding)
