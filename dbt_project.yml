@@ -2,7 +2,6 @@ name: 'nyc_analytics_project_ezheng'
 version: '1.0.0'
 config-version: 2
 
-# Default dbt profile
 profile: 'default'
 
 model-paths: ["models"]
@@ -13,14 +12,12 @@ macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 target-path: "target"
-
 clean-targets:
   - "target"
   - "dbt_packages"
 
-# Configure models (SQL files that build tables/views)
 models:
-  nyc_analytics_project_ezheng:
+  nyc_analytics_project_ezheng:  # Must match the name at the top
     +materialized: table
 
     assignment_work:
@@ -31,7 +28,7 @@ models:
       marts:
         +materialized: table
         +schema: nyc_transit_restaurants_marts
-
+      
         shared:
           +materialized: table
 
@@ -40,6 +37,5 @@ models:
 
         dot_311:
           +materialized: table
-
 
 
