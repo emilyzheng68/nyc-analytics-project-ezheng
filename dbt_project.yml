@@ -1,4 +1,4 @@
-name: 'nyc_analytics'
+name: 'nyc_analytics-project-ezheng'
 version: '1.0.0'
 config-version: 2
 # Some default settings for dbt
@@ -13,8 +13,8 @@ snapshot-paths: ["snapshots"]
 
 target-path: "target"
 clean-targets:
- - "target"
- - "dbt_packages"
+  - "target"
+  - "dbt_packages"
 
 # Set up models, which are basically SQL files, to create tables
 models:
