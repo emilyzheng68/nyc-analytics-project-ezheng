@@ -1,7 +1,7 @@
-name: 'nyc_analytics_project_zheng'
+name: 'nyc_analytics_project_ezheng'
 version: '1.0.0'
 config-version: 2
-# Some default settings for dbt
+
 profile: 'default'
 
 model-paths: ["models"]
@@ -13,31 +13,31 @@ snapshot-paths: ["snapshots"]
 
 target-path: "target"
 clean-targets:
- - "target"
- - "dbt_packages"
+  - "target"
+  - "dbt_packages"
 
-# Set up models, which are basically SQL files, to create tables
 models:
- nyc_analytics_project_ezheng:
-   +materialized: table
+  nyc_analytics_project_ezheng:
+    +materialized: table
 
-   assignment_work:
-     staging:
-       +materialized: table
-       +schema: nyc_transit_restaurants_staging
+    assignment_work:
+      staging:
+        +materialized: table
+        +schema: nyc_transit_restaurants_staging
 
-     marts:
-       +materialized: table
-       +schema: nyc_transit_restaurants_marts
-      
-       shared:
-         +materialized: table
+      marts:
+        +materialized: table
+        +schema: nyc_transit_restaurants_marts
 
-       open_restaurant_apps:
-         +materialized: table
+        shared:
+          +materialized: table
 
-       dot_311:
-         +materialized: table
+        open_restaurant_apps:
+          +materialized: table
+
+        dot_311:
+          +materialized: table
+
 
 
 
