@@ -39,5 +39,16 @@ models:
           +materialized: table
 
 
+    # === MILESTONE 4 - Motor Vehicle + 311 Project ===
+    milestone4:
+      staging:
+        +materialized: table
+        +schema: nyc_motor_vehicle_staging
+
+      marts:
+        +materialized: table
+        +schema: nyc_motor_vehicle_marts
+
+
 
 
