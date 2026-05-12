@@ -8,17 +8,13 @@ cleaned AS (
     SELECT
         CAST(collision_id AS STRING) AS collision_id,
 
-        -- Dates
-        PARSE_DATE('%Y-%m-%d', crash_date) AS crash_date,
+        -- Fixed Date Parsing
+        DATE(PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', crash_date)) AS crash_date,
         
-        -- Time
         PARSE_TIME('%H:%M', crash_time) AS crash_time,
         
-        -- Combined Datetime (Fixed)
-        DATETIME(
-            PARSE_DATE('%Y-%m-%d', crash_date), 
-            PARSE_TIME('%H:%M', crash_time)
-        ) AS crash_datetime,
+        -- Combined Datetime
+        PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', crash_date) AS crash_datetime,
 
         -- Location
         borough,
@@ -36,7 +32,6 @@ cleaned AS (
         CAST(number_of_motorist_injured AS INT64) AS number_of_motorist_injured,
         CAST(number_of_motorist_killed AS INT64) AS number_of_motorist_killed,
 
-        -- Other fields
         contributing_factor_vehicle_1,
         contributing_factor_vehicle_2,
         vehicle_type_code1,
@@ -48,7 +43,8 @@ cleaned AS (
 
     WHERE collision_id IS NOT NULL
       AND crash_date IS NOT NULL
-      AND PARSE_DATE('%Y-%m-%d', crash_date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 YEAR)
+      -- Filter to last 5 years
+      AND DATE(PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', crash_date)) >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 YEAR)
 )
 
 SELECT * FROM cleaned
