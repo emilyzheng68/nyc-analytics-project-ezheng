@@ -1,6 +1,6 @@
 -- Fact_Motor_Vehicle_Collision
 WITH stg AS (
-    SELECT * FROM {{ ref('stg_motor_vehicle_collisions') }}
+    SELECT * FROM {{ ref('stg_motor') }}
 ),
 
 fact AS (
