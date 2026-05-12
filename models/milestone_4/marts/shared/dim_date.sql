@@ -9,7 +9,7 @@ WITH all_dates AS (
 
     -- From 311 Service Requests
     SELECT DISTINCT CAST(created_date AS DATE) AS full_date
-    FROM {{ ref('stg_nyc_311_dot') }}
+    FROM {{ ref('stg_nyc_311service_dot') }}
     WHERE created_date IS NOT NULL
 ),
 
