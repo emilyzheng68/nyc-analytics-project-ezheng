@@ -2,7 +2,7 @@
 WITH all_dates AS (
     -- From Motor Vehicle Collisions
     SELECT DISTINCT CAST(crash_date AS DATE) AS full_date
-    FROM {{ ref('stg_motor_vehicle_collisions') }}
+    FROM {{ ref('stg_motor') }}
     WHERE crash_date IS NOT NULL
 
     UNION DISTINCT
