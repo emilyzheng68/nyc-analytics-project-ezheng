@@ -8,16 +8,25 @@ cleaned AS (
     SELECT
         CAST(collision_id AS STRING) AS collision_id,
 
-        -- Fix date handling
-        PARSE_DATE('%Y-%m-%d', crash_date) AS crash_date,                    -- Convert string to DATE
+        -- Dates
+        PARSE_DATE('%Y-%m-%d', crash_date) AS crash_date,
+        
+        -- Time
         PARSE_TIME('%H:%M', crash_time) AS crash_time,
-        TIMESTAMP(PARSE_DATE('%Y-%m-%d', crash_date), PARSE_TIME('%H:%M', crash_time)) AS crash_datetime,
+        
+        -- Combined Datetime (Fixed)
+        DATETIME(
+            PARSE_DATE('%Y-%m-%d', crash_date), 
+            PARSE_TIME('%H:%M', crash_time)
+        ) AS crash_datetime,
 
+        -- Location
         borough,
         zip_code,
         CAST(latitude AS FLOAT64) AS latitude,
         CAST(longitude AS FLOAT64) AS longitude,
 
+        -- Measures
         CAST(number_of_persons_injured AS INT64) AS number_of_persons_injured,
         CAST(number_of_persons_killed AS INT64) AS number_of_persons_killed,
         CAST(number_of_pedestrians_injured AS INT64) AS number_of_pedestrians_injured,
@@ -27,6 +36,7 @@ cleaned AS (
         CAST(number_of_motorist_injured AS INT64) AS number_of_motorist_injured,
         CAST(number_of_motorist_killed AS INT64) AS number_of_motorist_killed,
 
+        -- Other fields
         contributing_factor_vehicle_1,
         contributing_factor_vehicle_2,
         vehicle_type_code1,
@@ -38,7 +48,6 @@ cleaned AS (
 
     WHERE collision_id IS NOT NULL
       AND crash_date IS NOT NULL
-      -- Filter to last 5 years (after converting to DATE)
       AND PARSE_DATE('%Y-%m-%d', crash_date) >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 YEAR)
 )
 
