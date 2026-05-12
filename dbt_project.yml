@@ -39,7 +39,8 @@ models:
           +materialized: table
 
 
-    # === MILESTONE 4 - Motor Vehicle + 311 Project ===
+   
+    # ================== MILESTONE 4 ==================
     milestone4:
       staging:
         +materialized: table
@@ -49,6 +50,18 @@ models:
         +materialized: table
         +schema: nyc_motor_vehicle_marts
 
+        # Sub-folders inside marts
+        shared:
+          +materialized: table
+          +schema: nyc_motor_vehicle_marts
+
+        motor_vehicle:
+          +materialized: table
+          +schema: nyc_motor_vehicle_marts
+
+        dot_311:
+          +materialized: table
+          +schema: nyc_motor_vehicle_marts
 
 
 
