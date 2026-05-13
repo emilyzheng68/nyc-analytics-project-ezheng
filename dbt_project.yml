@@ -40,7 +40,7 @@ models:
 
 
    
-    # ================== MILESTONE 4 ==================
+================== MILESTONE 4 ==================
     milestone4:
       staging:
         +materialized: table
