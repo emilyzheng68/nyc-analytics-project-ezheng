@@ -38,27 +38,26 @@ models:
         dot_311:
           +materialized: table
 
-    # ================== MILESTONE 4 ==================
+    # ================== MILESTONE 4 ==================   
     milestone_4:
       staging:
         +materialized: table
         +schema: nyc_motor_vehicle_staging
-
+ 
       marts:
         +materialized: table
         +schema: nyc_motor_vehicle_marts
-
+ 
         shared:
           +materialized: table
           +schema: nyc_motor_vehicle_marts
-
-        motor_vehicle:
+ 
+        motor_vehicle_collision:       
           +materialized: table
           +schema: nyc_motor_vehicle_marts
-
-        dot_311:
+ 
+        311_request:                 
           +materialized: table
-          +schema: dbt_ezheng    # ✅ FIXED: points to correct dataset
-
+          +schema: dbt_ezheng
 
 
