@@ -1,14 +1,14 @@
 -- Fact_Illegal_Parking_Complaint
 WITH stg AS (
     SELECT * 
-    FROM {{ ref('stg_nyc_311service_dot') }}        -- FIXED: Correct reference name
+    FROM {{ ref('stg_nyc_311service_dot') }}
     WHERE complaint_type LIKE '%Illegal Parking%'
        OR complaint_type LIKE '%Parking%'
 ),
 
 fact AS (
     SELECT
-        {{ dbt_utils.generate_surrogate_key(['unique_key']) }} AS complaint_fact_key,
+        {{ dbt_utils.generate_surrogate_key(['request_id']) }} AS complaint_fact_key,  -- ✅ FIXED
 
         -- Foreign Keys
         {{ dbt_utils.generate_surrogate_key(['CAST(created_date AS DATE)']) }} AS date_created_key,

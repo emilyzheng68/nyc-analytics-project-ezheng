@@ -81,22 +81,10 @@ cleaned AS (
    FROM source
 
    -- Filters
-   WHERE (
-        agency = 'DOT'
-        OR agency_name LIKE '%Transportation%'
-      )
-  AND descriptor IN (
-        'Pothole',
-        'Pothole - Highway',
-        'Vehicle Signal',
-        'Line/Marking - Faded',
-        'Stop',
-        'Blocked - Construction'
-      )
-  AND unique_key IS NOT NULL
-  AND created_date IS NOT NULL
-  AND CAST(created_date AS DATE) >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 YEAR)
-  AND borough IS NOT NULL
+   WHERE unique_key IS NOT NULL
+   AND created_date IS NOT NULL
+   AND CAST(created_date AS DATE) >= DATE_SUB(CURRENT_DATE(), INTERVAL 5 YEAR)
+   AND borough IS NOT NULL
 
    -- Deduplicate
    QUALIFY ROW_NUMBER() OVER (PARTITION BY unique_key ORDER BY created_date DESC) = 1
